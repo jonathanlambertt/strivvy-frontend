@@ -11,7 +11,6 @@ const TabBar = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarShowLabel: false,
         tabBarActiveTintColor: "#333",
         tabBarInactiveTintColor: "#a9a9a9",
       }}
@@ -24,10 +23,11 @@ const TabBar = () => {
           tabBarIcon: ({ color }) => {
             return <AntDesign name="home" size={30} color={color} />;
           },
+          tabBarLabel: "Home",
         }}
       />
       <Tab.Screen
-        name="NewPostTab"
+        name="NewPostScreen"
         component={PlaceHolder}
         listeners={({ navigation }) => ({
           tabPress: (e) => {
@@ -37,8 +37,9 @@ const TabBar = () => {
         })}
         options={{
           tabBarIcon: () => {
-            return <Feather name="plus-circle" size={35} color="#ed1847" />;
+            return <Feather name="plus-circle" size={40} color="#ed1847" />;
           },
+          tabBarLabelStyle: { display: "none" },
         }}
       />
       <Tab.Screen
