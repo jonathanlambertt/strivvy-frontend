@@ -37,7 +37,7 @@ const TabBar = () => {
         })}
         options={{
           tabBarIcon: () => {
-            return <Feather name="plus-circle" size={40} color="#ed1847" />;
+            return <Feather name="plus-circle" size={40} color="#ef305a" />;
           },
           tabBarLabelStyle: { display: "none" },
         }}
