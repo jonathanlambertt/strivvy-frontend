@@ -10,23 +10,8 @@ import {
 import * as Clipboard from "expo-clipboard";
 
 const NewPostScreen = ({ navigation }) => {
-  const inputAccessoryViewID = "uniqueID";
   const [link, setLink] = useState("");
-  const [showPaste, setShowPaste] = useState(true);
-
-  const checkClipboard = async () => {
-    const url = await Clipboard.hasUrlAsync();
-    if (url) {
-      setShowPaste(true);
-    } else {
-      setShowPaste(false);
-    }
-  };
-
-  const pasteFromClipboard = async () => {
-    const url = await Clipboard.getUrlAsync();
-    setLink(url);
-  };
+  const inputAccessoryViewID = "uniqueID";
 
   useEffect(() => {
     navigation.setOptions({
@@ -41,7 +26,6 @@ const NewPostScreen = ({ navigation }) => {
         <Button title="Share" color={"#ef305a"} disabled={true} />
       ),
     });
-    checkClipboard();
   });
 
   return (
@@ -60,15 +44,11 @@ const NewPostScreen = ({ navigation }) => {
         autoFocus
       />
       <InputAccessoryView nativeID={inputAccessoryViewID}>
-        {showPaste ? (
-          <Button
-            onPress={() => {
-              pasteFromClipboard();
-            }}
-            title="Paste from clipboard"
-            color={"#333"}
-          />
-        ) : null}
+        <Button
+          onPress={() => {}}
+          title="Paste from clipboard"
+          color={"#333"}
+        />
       </InputAccessoryView>
     </ScrollView>
   );
