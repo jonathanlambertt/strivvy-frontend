@@ -7,10 +7,12 @@ import {
   StyleSheet,
   InputAccessoryView,
 } from "react-native";
-import * as Clipboard from "expo-clipboard";
+
+import isUrl from "is-url";
 
 const NewPostScreen = ({ navigation }) => {
-  const [link, setLink] = useState("");
+  const [inputText, setInputText] = useState("");
+  const [shareDisabled, setShareDisabled] = useState(true);
   const inputAccessoryViewID = "uniqueID";
 
   useEffect(() => {
@@ -23,10 +25,18 @@ const NewPostScreen = ({ navigation }) => {
         />
       ),
       headerRight: () => (
-        <Button title="Share" color={"#ef305a"} disabled={true} />
+        <Button title="Share" color={"#ef305a"} disabled={shareDisabled} />
       ),
     });
   });
+
+  useEffect(() => {
+    if (isUrl(inputText)) {
+      setShareDisabled(false);
+    } else {
+      setShareDisabled(true);
+    }
+  }, [inputText]);
 
   return (
     <ScrollView keyboardShouldPersistTaps="always" style={styles.view}>
@@ -34,8 +44,8 @@ const NewPostScreen = ({ navigation }) => {
         Share links to videos, music, or whatever you love.
       </Text>
       <TextInput
-        value={link}
-        onChangeText={(text) => setLink(text)}
+        value={inputText}
+        onChangeText={(text) => setInputText(text)}
         style={styles.linkInput}
         placeholder="Enter or paste a link"
         inputAccessoryViewID={inputAccessoryViewID}
