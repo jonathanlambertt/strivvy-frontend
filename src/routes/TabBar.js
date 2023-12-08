@@ -21,7 +21,14 @@ const TabBar = () => {
         options={{
           title: "strivvy",
           tabBarIcon: ({ color }) => {
-            return <AntDesign name="home" size={30} color={color} />;
+            return (
+              <AntDesign
+                name="home"
+                size={30}
+                color={color}
+                style={{ marginTop: 5 }}
+              />
+            );
           },
           tabBarLabel: "Home",
         }}
@@ -47,7 +54,14 @@ const TabBar = () => {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color }) => {
-            return <Feather name="user" size={30} color={color} />;
+            return (
+              <Feather
+                name="user"
+                size={30}
+                color={color}
+                style={{ marginTop: 5 }}
+              />
+            );
           },
         }}
       />
