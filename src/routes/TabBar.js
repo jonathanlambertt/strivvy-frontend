@@ -3,6 +3,7 @@ import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import AppName from "../components/atoms/AppName";
 
 const Tab = createBottomTabNavigator();
 const PlaceHolder = () => {};
@@ -19,7 +20,7 @@ const TabBar = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          title: "strivvy",
+          title: <AppName />,
           tabBarIcon: ({ color }) => {
             return (
               <AntDesign
