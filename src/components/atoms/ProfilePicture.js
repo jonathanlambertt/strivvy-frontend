@@ -6,8 +6,8 @@ const ProfilePicture = ({ src }) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 40,
-    height: 40,
+    width: 38,
+    height: 38,
     borderRadius: 40,
     borderColor: "#e9e9e9",
     borderWidth: 0.5,

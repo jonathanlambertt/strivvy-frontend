@@ -20,7 +20,7 @@ const TabBar = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          title: <AppName />,
+          headerTitle: () => <AppName />,
           tabBarIcon: ({ color }) => {
             return (
               <AntDesign

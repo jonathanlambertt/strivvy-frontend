@@ -9,7 +9,17 @@ const AppName = () => {
   if (!loaded) {
     return null;
   } else {
-    return <Text style={{ fontFamily: "Vadelma", fontSize: 33 }}>strivvy</Text>;
+    return (
+      <Text
+        style={{
+          fontFamily: "Vadelma",
+          fontSize: 36,
+          marginBottom: 4,
+        }}
+      >
+        strivvy
+      </Text>
+    );
   }
 };
 
