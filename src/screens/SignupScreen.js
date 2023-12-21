@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextInput,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
@@ -15,20 +16,27 @@ const SignupScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
-  const [errorText, setErrorText] = useState([]);
+  const [errorText, setErrorText] = useState("");
+  const [disableSignup, setDisableSignup] = useState(false);
 
   const signUp = async () => {
-    setErrorText("");
+    const formattedUsername = formatUsername(username);
     try {
+      setDisableSignup(true);
+      setErrorText("");
       await strivvy.post("u/", {
-        username,
+        username: formattedUsername,
         password,
         email,
       });
     } catch (error) {
+      setDisableSignup(false);
       setErrorText(JSON.stringify(error.response.data));
     }
+  };
+
+  const formatUsername = (username) => {
+    return username.toLowerCase();
   };
 
   useEffect(() => {
@@ -39,7 +47,7 @@ const SignupScreen = ({ navigation }) => {
             name="chevron-left"
             size={35}
             color="#333"
-            style={{ marginLeft: -10 }}
+            style={{ marginLeft: -11 }}
           />
         </Pressable>
       ),
@@ -87,16 +95,13 @@ const SignupScreen = ({ navigation }) => {
         />
         {errorText ? (
           <Text
-            style={{
-              color: "red",
-              alignSelf: "center",
-              marginVertical: 5,
-            }}
+            style={{ color: "red", alignSelf: "center", marginVertical: 5 }}
           >
             {errorText}
           </Text>
         ) : null}
         <Pressable
+          disabled={disableSignup}
           onPress={() => signUp()}
           style={{
             borderWidth: 1,
@@ -109,16 +114,20 @@ const SignupScreen = ({ navigation }) => {
             marginTop: 15,
           }}
         >
-          <Text
-            style={{
-              fontSize: 16,
-              color: "#fff",
-              fontWeight: 500,
-              alignSelf: "center",
-            }}
-          >
-            Sign up
-          </Text>
+          {disableSignup ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#fff",
+                fontWeight: 500,
+                alignSelf: "center",
+              }}
+            >
+              Sign up
+            </Text>
+          )}
         </Pressable>
       </View>
     </ScrollView>
