@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabBar from "./TabBar";
+import AuthStack from "./AuthStack";
 import NewPostScreen from "../screens/NewPostScreen";
 
 const Stack = createNativeStackNavigator();
@@ -7,9 +8,14 @@ const Stack = createNativeStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="TabBar"
         component={TabBar}
+        options={{ headerShown: false }}
+      /> */}
+      <Stack.Screen
+        name="AuthStack"
+        component={AuthStack}
         options={{ headerShown: false }}
       />
       <Stack.Group

@@ -1,7 +1,7 @@
 import { Text } from "react-native";
 import { useFonts } from "expo-font";
 
-const AppName = () => {
+const AppName = ({ fontSize }) => {
   const [loaded] = useFonts({
     Vadelma: require("../../../assets/Vadelma-Medium.otf"),
   });
@@ -13,7 +13,8 @@ const AppName = () => {
       <Text
         style={{
           fontFamily: "Vadelma",
-          fontSize: 36,
+          fontSize: fontSize,
+          // 36 old fontSize
           marginBottom: 4,
         }}
       >
