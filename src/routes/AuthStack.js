@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthMainScreen from "../screens/AuthMainScreen";
 import SignupScreen from "../screens/SignupScreen";
+import LoginScreen from "../screens/LoginScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,11 +30,11 @@ const AuthStack = () => {
           presentation: "modal",
         }}
       >
-        {/* <Stack.Screen
-          name="NewPost"
-          component={NewPostScreen}
-          options={{ title: "Share a link" }}
-        /> */}
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{ title: "Log in" }}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );

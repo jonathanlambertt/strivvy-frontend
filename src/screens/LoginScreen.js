@@ -1,59 +1,48 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
+  ScrollView,
+  Text,
   Pressable,
   View,
-  Text,
-  StyleSheet,
   TextInput,
-  ScrollView,
+  StyleSheet,
   ActivityIndicator,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
-
+import { AntDesign } from "@expo/vector-icons";
 import strivvy from "../api/strivvy";
+import * as SecureStore from "expo-secure-store";
+import { AuthContext } from "../contexts/AuthContext";
 
-const SignupScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
   const [errorText, setErrorText] = useState("");
-  const [disableSignup, setDisableSignup] = useState(false);
+  const [disableLogin, setDisableLogin] = useState(false);
 
-  const signUp = async () => {
-    const formattedUsername = formatUsername(username);
-    try {
-      setDisableSignup(true);
-      setErrorText("");
-      await strivvy.post("u/", {
-        username: formattedUsername,
-        password,
-        email,
-      });
-      navigation.navigate("MainScreen");
-    } catch (error) {
-      setDisableSignup(false);
-      setErrorText(JSON.stringify(error.response.data));
-    }
-  };
-
-  const formatUsername = (username) => {
-    return username.toLowerCase();
-  };
+  const { setIsLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
         <Pressable onPress={() => navigation.goBack()}>
-          <Feather
-            name="chevron-left"
-            size={35}
-            color="#333"
-            style={{ marginLeft: -11 }}
-          />
+          <AntDesign name="close" size={28} color="#333" />
         </Pressable>
       ),
     });
   }, [navigation]);
+
+  const logIn = async () => {
+    try {
+      setDisableLogin(true);
+      setErrorText("");
+      const response = await strivvy.post("u/login", { username, password });
+      await SecureStore.setItemAsync("userToken", response.data.token);
+      setIsLoggedIn(true);
+    } catch (error) {
+      setDisableLogin(false);
+      setErrorText(JSON.stringify(error.response.data));
+    }
+  };
 
   return (
     <ScrollView
@@ -66,7 +55,7 @@ const SignupScreen = ({ navigation }) => {
           value={username}
           onChangeText={(text) => setUsername(text)}
           style={styles.linkInput}
-          placeholder="Choose a username."
+          placeholder="Please enter your username."
           placeholderTextColor={"#a9a9a9"}
           selectionColor={"#ef305a"}
           autoFocus
@@ -78,21 +67,10 @@ const SignupScreen = ({ navigation }) => {
           value={password}
           onChangeText={(text) => setPassword(text)}
           style={styles.linkInput}
-          placeholder="Pick a strong password."
+          placeholder="Please enter your password."
           placeholderTextColor={"#a9a9a9"}
           selectionColor={"#ef305a"}
           secureTextEntry={true}
-        />
-        <Text style={{ fontSize: 16, marginBottom: 5, marginTop: 12 }}>
-          Email (optional)
-        </Text>
-        <TextInput
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          style={styles.linkInput}
-          placeholder="Your email - if you want."
-          placeholderTextColor={"#a9a9a9"}
-          selectionColor={"#ef305a"}
         />
         {errorText ? (
           <Text
@@ -102,8 +80,8 @@ const SignupScreen = ({ navigation }) => {
           </Text>
         ) : null}
         <Pressable
-          disabled={disableSignup}
-          onPress={() => signUp()}
+          disabled={disableLogin}
+          onPress={() => logIn()}
           style={{
             borderWidth: 1,
             borderColor: "#ef305a",
@@ -115,7 +93,7 @@ const SignupScreen = ({ navigation }) => {
             marginTop: 15,
           }}
         >
-          {disableSignup ? (
+          {disableLogin ? (
             <ActivityIndicator size="small" color="#fff" />
           ) : (
             <Text
@@ -126,7 +104,7 @@ const SignupScreen = ({ navigation }) => {
                 alignSelf: "center",
               }}
             >
-              Sign up
+              Log in
             </Text>
           )}
         </Pressable>
@@ -140,13 +118,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 1,
     borderColor: "#ececec",
-    //marginHorizontal: 15,
     borderRadius: 6,
     height: 48,
-    //marginTop: 15,
     fontSize: 15,
     backgroundColor: "#fcfcfc",
   },
 });
 
-export default SignupScreen;
+export default LoginScreen;

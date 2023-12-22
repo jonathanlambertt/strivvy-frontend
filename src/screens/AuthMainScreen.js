@@ -23,7 +23,7 @@ const AuthMainScreen = ({ navigation }) => {
           marginBottom: 10,
           marginTop: 15,
         }}
-        onPress={() => console.log("log in")}
+        onPress={() => navigation.navigate("LoginScreen")}
       >
         <Text style={{ fontSize: 18, color: "#fff", fontWeight: 500 }}>
           Log in
