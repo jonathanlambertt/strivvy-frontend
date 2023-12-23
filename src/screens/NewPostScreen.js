@@ -7,7 +7,7 @@ import {
   StyleSheet,
   InputAccessoryView,
 } from "react-native";
-
+import * as Clipboard from "expo-clipboard";
 import isUrl from "is-url";
 
 const NewPostScreen = ({ navigation }) => {
@@ -38,6 +38,11 @@ const NewPostScreen = ({ navigation }) => {
     }
   }, [inputText]);
 
+  const fetchClipboardText = async () => {
+    const text = await Clipboard.getStringAsync();
+    setInputText(text);
+  };
+
   return (
     <ScrollView keyboardShouldPersistTaps="always" style={styles.view}>
       <Text style={styles.title}>
@@ -52,10 +57,11 @@ const NewPostScreen = ({ navigation }) => {
         placeholderTextColor={"#a9a9a9"}
         selectionColor={"#ef305a"}
         autoFocus
+        clearButtonMode="while-editing"
       />
       <InputAccessoryView nativeID={inputAccessoryViewID}>
         <Button
-          onPress={() => {}}
+          onPress={() => fetchClipboardText()}
           title="Paste from clipboard"
           color={"#333"}
         />

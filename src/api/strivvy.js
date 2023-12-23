@@ -8,7 +8,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    const token = await SecureStore.getItemAsync("user-token");
+    const token = await SecureStore.getItemAsync("userToken");
     if (token) {
       config.headers.Authorization = `Token ${token}`;
     }

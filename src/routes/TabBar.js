@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../screens/HomeScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+
+import HomeStack from "./HomeStack";
+import ProfileStack from "./ProfileStack";
+
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
-import AppName from "../components/atoms/AppName";
 
 const Tab = createBottomTabNavigator();
 const PlaceHolder = () => {};
@@ -14,13 +15,13 @@ const TabBar = () => {
       screenOptions={{
         tabBarActiveTintColor: "#333",
         tabBarInactiveTintColor: "#a9a9a9",
+        headerShown: false,
       }}
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
-          headerTitle: () => <AppName fontSize={36} />,
           tabBarIcon: ({ color }) => {
             return (
               <AntDesign
@@ -52,7 +53,7 @@ const TabBar = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStack}
         options={{
           tabBarIcon: ({ color }) => {
             return (

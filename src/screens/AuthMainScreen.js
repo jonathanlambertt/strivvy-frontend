@@ -11,7 +11,7 @@ const AuthMainScreen = ({ navigation }) => {
         backgroundColor: "#fff",
       }}
     >
-      <AppName fontSize={45} />
+      <AppName fontSize={59} />
       <Pressable
         style={{
           borderWidth: 1,
