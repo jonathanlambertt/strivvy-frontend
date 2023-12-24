@@ -1,9 +1,11 @@
-import { View } from "react-native";
 import { useEffect, useState } from "react";
+import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+
 import { StatusBar } from "expo-status-bar";
-import RootStack from "./src/routes/RootStack";
 import * as SecureStore from "expo-secure-store";
+
+import RootStack from "./src/routes/RootStack";
 import AuthStack from "./src/routes/AuthStack";
 import { AuthContext } from "./src/contexts/AuthContext";
 
