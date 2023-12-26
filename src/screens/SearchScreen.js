@@ -1,14 +1,8 @@
 import { useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  FlatList,
-  Text,
-  Button,
-} from "react-native";
+import { View, StyleSheet, TextInput, FlatList } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import strivvy from "../api/strivvy";
+import UserResult from "../components/molecules/UserResult";
 
 const SearchScreen = () => {
   const [results, setResults] = useState([]);
@@ -58,26 +52,10 @@ const SearchScreen = () => {
       </View>
       <FlatList
         data={results}
-        renderItem={({ item }) => (
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginHorizontal: 10,
-              flex: 1,
-            }}
-          >
-            <Text style={{ fontSize: 18, fontWeight: 500 }}>
-              @{item.username}
-            </Text>
-            <View>
-              {item.is_following || item.is_searching_user ? null : (
-                <Button title="Follow" color={"#ef305a"} />
-              )}
-            </View>
-          </View>
-        )}
         keyExtractor={(item) => item.id}
+        renderItem={({ item }) => {
+          return <UserResult item={item} />;
+        }}
       />
     </View>
   );
