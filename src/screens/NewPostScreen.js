@@ -9,12 +9,15 @@ import {
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import isUrl from "is-url";
-import { getLinkPreview } from "link-preview-js";
+
+import { useLinkPreview } from "get-link-preview";
 
 const NewPostScreen = ({ navigation }) => {
   const [inputText, setInputText] = useState("");
   const [shareDisabled, setShareDisabled] = useState(true);
   const inputAccessoryViewID = "uniqueID";
+
+  const { getLinkPreviewData, loading, error, data } = useLinkPreview();
 
   useEffect(() => {
     navigation.setOptions({
@@ -34,7 +37,7 @@ const NewPostScreen = ({ navigation }) => {
   useEffect(() => {
     if (isUrl(inputText)) {
       setShareDisabled(false);
-      fetchLinkPreviw();
+      fetchLinkPreview();
     } else {
       setShareDisabled(true);
     }
@@ -45,8 +48,13 @@ const NewPostScreen = ({ navigation }) => {
     setInputText(text);
   };
 
-  const fetchLinkPreviw = () => {
-    getLinkPreview(inputText).then((data) => console.debug(data));
+  const fetchLinkPreview = async () => {
+    getLinkPreviewData(inputText);
+    console.log(`description: ${data["description"]}`);
+    console.log(`title: ${data["title"]}`);
+    console.log(`image: ${data["image"]}`);
+    console.log(`favicon: ${data["favicon"]}`);
+    console.log(`siteName: ${data["sitename"]}`);
   };
 
   return (
