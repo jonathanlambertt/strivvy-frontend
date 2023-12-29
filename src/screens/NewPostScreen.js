@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import isUrl from "is-url";
+import { getLinkPreview } from "link-preview-js";
 
 const NewPostScreen = ({ navigation }) => {
   const [inputText, setInputText] = useState("");
@@ -33,6 +34,7 @@ const NewPostScreen = ({ navigation }) => {
   useEffect(() => {
     if (isUrl(inputText)) {
       setShareDisabled(false);
+      fetchLinkPreviw();
     } else {
       setShareDisabled(true);
     }
@@ -41,6 +43,10 @@ const NewPostScreen = ({ navigation }) => {
   const fetchClipboardText = async () => {
     const text = await Clipboard.getStringAsync();
     setInputText(text);
+  };
+
+  const fetchLinkPreviw = () => {
+    getLinkPreview(inputText).then((data) => console.debug(data));
   };
 
   return (
