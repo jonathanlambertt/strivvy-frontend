@@ -9,15 +9,12 @@ import {
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import isUrl from "is-url";
-
-import { useLinkPreview } from "get-link-preview";
+import axios from "axios";
 
 const NewPostScreen = ({ navigation }) => {
   const [inputText, setInputText] = useState("");
   const [shareDisabled, setShareDisabled] = useState(true);
   const inputAccessoryViewID = "uniqueID";
-
-  const { getLinkPreviewData, loading, error, data } = useLinkPreview();
 
   useEffect(() => {
     navigation.setOptions({
@@ -49,12 +46,16 @@ const NewPostScreen = ({ navigation }) => {
   };
 
   const fetchLinkPreview = async () => {
-    getLinkPreviewData(inputText);
-    console.log(`description: ${data["description"]}`);
-    console.log(`title: ${data["title"]}`);
-    console.log(`image: ${data["image"]}`);
-    console.log(`favicon: ${data["favicon"]}`);
-    console.log(`siteName: ${data["sitename"]}`);
+    try {
+      const response = await axios.get(
+        `https://getlinkpreview.onrender.com/?url=${inputText}`
+      );
+      console.log(`description: ${response.data["description"]}`);
+      console.log(`title: ${response.data["title"]}`);
+      console.log(`image: ${response.data["image"]}`);
+      console.log(`favicon: ${response.data["favicon"]}`);
+      console.log(`siteName: ${response.data["sitename"]}`);
+    } catch (error) {}
   };
 
   return (

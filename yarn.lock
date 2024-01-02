@@ -3526,11 +3526,6 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.3, get-intrinsic@^1.2.1, get-intrinsic@
     has-symbols "^1.0.3"
     hasown "^2.0.0"
 
-get-link-preview@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/get-link-preview/-/get-link-preview-1.0.7.tgz#c6bbbc11f055186a2636edf9733eaf37b4a90a03"
-  integrity sha512-yr+G+JUqiRb0mTVvaxP+IPgz0ulDOW+WWFekOm0inc44PvPMFnMRKNqUszwG/X3TJVp7OXBAGcy1Z65S3YvnKQ==
-
 get-port@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/get-port/-/get-port-3.2.0.tgz#dd7ce7de187c06c8bf353796ac71e099f0980ebc"
