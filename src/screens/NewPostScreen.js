@@ -75,7 +75,7 @@ const NewPostScreen = ({ navigation }) => {
       await strivvy.post("p/", {
         thumbnail: preview.image,
         title: preview.title,
-        description: preview.description,
+        description: preview.description.substring(0, 250),
         favicon: preview.favicon,
         site_name: preview.sitename,
         url: linkInput,
