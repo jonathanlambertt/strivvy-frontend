@@ -6,14 +6,21 @@ import {
   Text,
   StyleSheet,
   InputAccessoryView,
+  Keyboard,
+  ActivityIndicator,
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import isUrl from "is-url";
 import axios from "axios";
+import LinkPreview from "../components/molecules/LinkPreview";
+import strivvy from "../api/strivvy";
 
 const NewPostScreen = ({ navigation }) => {
-  const [inputText, setInputText] = useState("");
+  const [fetchingPreview, setFetchingPreview] = useState(false);
+  const [linkInput, setLinkInput] = useState("");
   const [shareDisabled, setShareDisabled] = useState(true);
+  const [preview, setPreview] = useState("");
+
   const inputAccessoryViewID = "uniqueID";
 
   useEffect(() => {
@@ -26,36 +33,57 @@ const NewPostScreen = ({ navigation }) => {
         />
       ),
       headerRight: () => (
-        <Button title="Share" color={"#ef305a"} disabled={shareDisabled} />
+        <Button
+          title="Share"
+          color={"#ef305a"}
+          disabled={shareDisabled}
+          onPress={() => shareLink()}
+        />
       ),
     });
   });
 
   useEffect(() => {
-    if (isUrl(inputText)) {
-      setShareDisabled(false);
+    if (isUrl(linkInput)) {
       fetchLinkPreview();
+      Keyboard.dismiss();
     } else {
       setShareDisabled(true);
     }
-  }, [inputText]);
+  }, [linkInput]);
 
   const fetchClipboardText = async () => {
     const text = await Clipboard.getStringAsync();
-    setInputText(text);
+    setLinkInput(text);
   };
 
   const fetchLinkPreview = async () => {
     try {
+      setFetchingPreview(true);
       const response = await axios.get(
-        `https://getlinkpreview.onrender.com/?url=${inputText}`
+        `https://getlinkpreview.onrender.com/?url=${linkInput}`
       );
-      console.log(`description: ${response.data["description"]}`);
-      console.log(`title: ${response.data["title"]}`);
-      console.log(`image: ${response.data["image"]}`);
-      console.log(`favicon: ${response.data["favicon"]}`);
-      console.log(`siteName: ${response.data["sitename"]}`);
+      setPreview(response.data);
+      setShareDisabled(false);
+      setFetchingPreview(false);
     } catch (error) {}
+  };
+
+  const shareLink = async () => {
+    try {
+      setShareDisabled(true);
+      await strivvy.post("p/", {
+        thumbnail: preview.image,
+        title: preview.title,
+        description: preview.description,
+        favicon: preview.favicon,
+        site_name: preview.sitename,
+        url: linkInput,
+      });
+      navigation.goBack();
+    } catch (error) {
+      setShareDisabled(false);
+    }
   };
 
   return (
@@ -64,8 +92,8 @@ const NewPostScreen = ({ navigation }) => {
         Share links to videos, music, or whatever you love.
       </Text>
       <TextInput
-        value={inputText}
-        onChangeText={(text) => setInputText(text)}
+        value={linkInput}
+        onChangeText={(text) => setLinkInput(text)}
         style={styles.linkInput}
         placeholder="Enter or paste a link"
         inputAccessoryViewID={inputAccessoryViewID}
@@ -81,6 +109,17 @@ const NewPostScreen = ({ navigation }) => {
           color={"#333"}
         />
       </InputAccessoryView>
+      {linkInput == "" ? null : fetchingPreview ? (
+        <ActivityIndicator size={"small"} style={{ marginTop: 15 }} />
+      ) : (
+        <LinkPreview
+          image={preview.image}
+          title={preview.title}
+          description={preview.description}
+          favicon={preview.favicon}
+          siteName={preview.sitename}
+        />
+      )}
     </ScrollView>
   );
 };

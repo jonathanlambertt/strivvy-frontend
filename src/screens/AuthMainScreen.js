@@ -20,7 +20,6 @@ const AuthMainScreen = ({ navigation }) => {
           paddingVertical: 9,
           borderRadius: 6,
           backgroundColor: "#ef305a",
-          marginBottom: 10,
           marginTop: 15,
         }}
         onPress={() => navigation.navigate("LoginScreen")}
@@ -29,9 +28,12 @@ const AuthMainScreen = ({ navigation }) => {
           Log in
         </Text>
       </Pressable>
+      <Text style={{ fontSize: 18, fontWeight: 500, marginVertical: 10 }}>
+        Or
+      </Text>
       <Pressable onPress={() => navigation.navigate("SignupScreen")}>
         <Text style={{ fontSize: 18, color: "#ef305a", fontWeight: 500 }}>
-          Sign up
+          Create an account
         </Text>
       </Pressable>
     </SafeAreaView>
