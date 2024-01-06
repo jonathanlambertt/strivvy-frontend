@@ -1,6 +1,6 @@
 import { FlatList, View } from "react-native";
 import Post from "../components/molecules/Post";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Pressable } from "react-native";
 import AppName from "../components/atoms/AppName";
@@ -8,7 +8,7 @@ import AppName from "../components/atoms/AppName";
 const HomeScreen = ({ navigation }) => {
   const data = [];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => <AppName fontSize={36} />,
       headerRight: () => (
