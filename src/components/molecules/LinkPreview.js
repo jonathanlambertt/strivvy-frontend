@@ -1,32 +1,18 @@
-import { Image, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 
 const LinkPreview = ({ image, favicon, siteName, title, description }) => {
   return (
     <View
       style={{
-        marginHorizontal: 15,
+        //marginHorizontal: 15,
         borderWidth: 0.5,
         borderRadius: 6,
-        borderColor: "#ececec",
-        marginVertical: 8,
+        borderColor: "#e9e9e9",
+        marginTop: 5,
         flexDirection: "row",
-        padding: 6,
+        padding: 8,
       }}
     >
-      <View>
-        <Image
-          src={image}
-          style={{
-            width: 80,
-            height: 80,
-            resizeMode: "contain",
-            backgroundColor: "#ececec",
-            borderRadius: 6,
-            borderWidth: 0.5,
-            borderColor: "#ececec",
-          }}
-        />
-      </View>
       <View
         style={{
           justifyContent: "center",
@@ -61,6 +47,20 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
           />
           <Text style={{ fontSize: 12, color: "#333" }}>{siteName}</Text>
         </View>
+      </View>
+      <View>
+        <Image
+          src={image}
+          style={{
+            width: 80,
+            height: 80,
+            resizeMode: "contain",
+            backgroundColor: "#ececec",
+            borderRadius: 6,
+            borderWidth: 0.5,
+            borderColor: "#d3d3d3",
+          }}
+        />
       </View>
     </View>
   );

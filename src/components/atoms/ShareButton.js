@@ -13,6 +13,7 @@ const ShareButton = () => {
         marginRight: 10,
         paddingVertical: 3,
         borderColor: "#e9e9e9",
+        //marginTop: 10,
       }}
     >
       <Ionicons
