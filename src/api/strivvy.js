@@ -1,9 +1,9 @@
 import axios from "axios";
+import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
 
 const instance = axios.create({
-  baseURL: "http://192.168.1.153:8000/",
-  //baseURL: "http://192.168.1.198:8000/",
+  baseURL: Constants.expoConfig.extra.baseURL,
   timeout: 1000,
 });
 

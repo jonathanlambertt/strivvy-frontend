@@ -33,7 +33,8 @@ const Post = ({ nav, post }) => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
-    borderBottomWidth: 1,
+    marginBottom: 5,
+    //borderBottomWidth: 1,
     paddingBottom: 10,
     paddingTop: 10,
     borderColor: "#e9e9e9",
