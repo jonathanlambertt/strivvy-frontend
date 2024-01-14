@@ -1,7 +1,18 @@
 import { View, Text, StyleSheet, Button, Image, Pressable } from "react-native";
 import LinkPreview from "./LinkPreview";
+import AppLink from "react-native-app-link";
 
 const Post = ({ nav, post }) => {
+  const openLink = () => {
+    AppLink.maybeOpenURL(post.url, {})
+      .then(() => {
+        // do stuff
+      })
+      .catch((err) => {
+        // handle error
+      });
+  };
+
   return (
     <View style={styles.container}>
       {/* header */}
@@ -11,9 +22,7 @@ const Post = ({ nav, post }) => {
         </Text>
       </View>
       {/* body */}
-      <Pressable
-        onPress={() => nav.navigate("LinkViewScreen", { uri: post.url })}
-      >
+      <Pressable onPress={() => openLink()}>
         <LinkPreview
           image={post.thumbnail}
           title={post.title}

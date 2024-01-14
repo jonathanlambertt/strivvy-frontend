@@ -1,11 +1,23 @@
-import { useEffect, useState } from "react";
-import { View, Pressable, ScrollView, Text } from "react-native";
+import { useEffect, useState, useCallback } from "react";
+import {
+  View,
+  Pressable,
+  ScrollView,
+  Text,
+  RefreshControl,
+} from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 import strivvy from "../api/strivvy";
 
 const ProfileScreen = ({ navigation }) => {
   const [profile, setProfile] = useState({});
+  const [refreshing, setRefreshing] = useState(true);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    fetchProfile();
+  }, []);
 
   useEffect(() => {
     navigation.setOptions({
@@ -25,11 +37,17 @@ const ProfileScreen = ({ navigation }) => {
     try {
       const response = await strivvy.get("u/profile");
       setProfile(response.data);
+      setRefreshing(false);
     } catch (error) {}
   };
 
   return (
-    <ScrollView style={{ backgroundColor: "#fff" }}>
+    <ScrollView
+      style={{ backgroundColor: "#fff" }}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <View style={{ alignItems: "center", marginTop: 25 }}>
         <Text style={{ fontSize: 25, marginBottom: 30 }}>
           @{profile.username}
