@@ -32,16 +32,24 @@ const LoginScreen = ({ navigation }) => {
   }, [navigation]);
 
   const logIn = async () => {
+    const formattedUsername = lowerCaseText(username);
     try {
       setDisableLogin(true);
       setErrorText("");
-      const response = await strivvy.post("u/login", { username, password });
+      const response = await strivvy.post("u/login", {
+        username: formattedUsername,
+        password,
+      });
       await SecureStore.setItemAsync("userToken", response.data.token);
       setIsLoggedIn(true);
     } catch (error) {
       setDisableLogin(false);
       setErrorText(JSON.stringify(error.response.data));
     }
+  };
+
+  const lowerCaseText = (text) => {
+    return text.toLowerCase();
   };
 
   return (

@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
-import LinkViewScreen from "../screens/LinkViewScreen";
 import { Feather } from "@expo/vector-icons";
 import { Pressable } from "react-native";
 
@@ -29,7 +28,6 @@ const HomeStack = ({ navigation }) => {
           ),
         }}
       />
-      <Stack.Screen name="LinkViewScreen" component={LinkViewScreen} />
     </Stack.Navigator>
   );
 };

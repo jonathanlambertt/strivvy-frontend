@@ -41,10 +41,12 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
         <View
           style={{ flexDirection: "row", alignItems: "center", marginTop: 3 }}
         >
-          <Image
-            src={favicon}
-            style={{ width: 14, height: 14, marginRight: 3 }}
-          />
+          {favicon != "null" ? (
+            <Image
+              src={favicon}
+              style={{ width: 14, height: 14, marginRight: 3 }}
+            />
+          ) : null}
           <Text style={{ fontSize: 12, color: "#333" }}>{siteName}</Text>
         </View>
       </View>

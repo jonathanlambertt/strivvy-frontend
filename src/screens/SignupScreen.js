@@ -20,14 +20,15 @@ const SignupScreen = ({ navigation }) => {
   const [disableSignup, setDisableSignup] = useState(false);
 
   const signUp = async () => {
-    const formattedUsername = formatUsername(username);
+    const formattedUsername = lowerCaseText(username);
+    const formattedEmail = lowerCaseText(email);
     try {
       setDisableSignup(true);
       setErrorText("");
       await strivvy.post("u/", {
         username: formattedUsername,
         password,
-        email,
+        email: formattedEmail,
       });
       navigation.navigate("MainScreen");
     } catch (error) {
@@ -36,8 +37,8 @@ const SignupScreen = ({ navigation }) => {
     }
   };
 
-  const formatUsername = (username) => {
-    return username.toLowerCase();
+  const lowerCaseText = (text) => {
+    return text.toLowerCase();
   };
 
   useEffect(() => {
@@ -70,6 +71,7 @@ const SignupScreen = ({ navigation }) => {
           placeholderTextColor={"#a9a9a9"}
           selectionColor={"#ef305a"}
           autoFocus
+          autoCapitalize="none"
         />
         <Text style={{ fontSize: 16, marginBottom: 5, marginTop: 12 }}>
           Password
@@ -82,6 +84,7 @@ const SignupScreen = ({ navigation }) => {
           placeholderTextColor={"#a9a9a9"}
           selectionColor={"#ef305a"}
           secureTextEntry={true}
+          autoCapitalize="none"
         />
         <Text style={{ fontSize: 16, marginBottom: 5, marginTop: 12 }}>
           Email (optional)
@@ -93,6 +96,7 @@ const SignupScreen = ({ navigation }) => {
           placeholder="Your email - if you want."
           placeholderTextColor={"#a9a9a9"}
           selectionColor={"#ef305a"}
+          autoCapitalize="none"
         />
         {errorText ? (
           <Text
