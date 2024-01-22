@@ -67,6 +67,7 @@ const LoginScreen = ({ navigation }) => {
           placeholderTextColor={"#a9a9a9"}
           selectionColor={"#ef305a"}
           autoFocus
+          autoCapitalize="none"
         />
         <Text style={{ fontSize: 16, marginBottom: 5, marginTop: 12 }}>
           Password
@@ -79,6 +80,7 @@ const LoginScreen = ({ navigation }) => {
           placeholderTextColor={"#a9a9a9"}
           selectionColor={"#ef305a"}
           secureTextEntry={true}
+          autoCapitalize="none"
         />
         {errorText ? (
           <Text

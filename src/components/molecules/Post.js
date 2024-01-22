@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   username: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "500",
     flex: 1,
     //marginLeft: 7,

@@ -8,12 +8,14 @@ import {
   InputAccessoryView,
   Keyboard,
   ActivityIndicator,
+  View,
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import isUrl from "is-url";
 import axios from "axios";
 import LinkPreview from "../components/molecules/LinkPreview";
 import strivvy from "../api/strivvy";
+import Constants from "expo-constants";
 
 const NewPostScreen = ({ navigation }) => {
   const [fetchingPreview, setFetchingPreview] = useState(false);
@@ -61,7 +63,7 @@ const NewPostScreen = ({ navigation }) => {
     try {
       setFetchingPreview(true);
       const response = await axios.get(
-        `https://getlinkpreview.onrender.com/?url=${linkInput}`
+        `${Constants.expoConfig.extra.previewURL}${linkInput}`
       );
       setPreview(response.data);
       setShareDisabled(false);
@@ -74,10 +76,10 @@ const NewPostScreen = ({ navigation }) => {
       setShareDisabled(true);
       await strivvy.post("p/", {
         thumbnail: preview.image,
-        title: preview.title,
+        title: preview.title.substring(0, 250),
         description: preview.description.substring(0, 250),
         favicon: preview.favicon,
-        site_name: preview.sitename,
+        site_name: preview.sitename.substring(0, 250),
         url: linkInput,
       });
       navigation.goBack();
@@ -112,13 +114,15 @@ const NewPostScreen = ({ navigation }) => {
       {linkInput == "" ? null : fetchingPreview ? (
         <ActivityIndicator size={"small"} style={{ marginTop: 15 }} />
       ) : (
-        <LinkPreview
-          image={preview.image}
-          title={preview.title}
-          description={preview.description}
-          favicon={preview.favicon}
-          siteName={preview.sitename}
-        />
+        <View style={{ marginHorizontal: 15 }}>
+          <LinkPreview
+            image={preview.image}
+            title={preview.title}
+            description={preview.description}
+            favicon={preview.favicon}
+            siteName={preview.sitename}
+          />
+        </View>
       )}
     </ScrollView>
   );

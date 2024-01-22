@@ -1,4 +1,4 @@
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 
 const LinkPreview = ({ image, favicon, siteName, title, description }) => {
   return (
@@ -13,12 +13,26 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
         padding: 8,
       }}
     >
+      <View>
+        <Image
+          src={image}
+          style={{
+            width: 75,
+            height: 75,
+            resizeMode: "contain",
+            backgroundColor: "#ececec",
+            borderRadius: 6,
+            borderWidth: 0.5,
+            borderColor: "#d3d3d3",
+          }}
+        />
+      </View>
       <View
         style={{
           justifyContent: "center",
           marginLeft: 10,
           flex: 1,
-          marginRight: 10,
+          marginRight: 5,
         }}
       >
         <Text
@@ -33,13 +47,13 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
             fontSize: 13,
             fontWeight: "500",
             color: "#808080",
-            marginTop: 2,
+            marginTop: 3,
           }}
         >
           {description}
         </Text>
         <View
-          style={{ flexDirection: "row", alignItems: "center", marginTop: 3 }}
+          style={{ flexDirection: "row", alignItems: "center", marginTop: 5 }}
         >
           {favicon != "null" ? (
             <Image
@@ -50,7 +64,7 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
           <Text style={{ fontSize: 12, color: "#333" }}>{siteName}</Text>
         </View>
       </View>
-      <View>
+      {/* <View>
         <Image
           src={image}
           style={{
@@ -63,7 +77,7 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
             borderColor: "#d3d3d3",
           }}
         />
-      </View>
+      </View> */}
     </View>
   );
 };
