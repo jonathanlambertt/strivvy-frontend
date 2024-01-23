@@ -6,7 +6,6 @@ import {
   Text,
   StyleSheet,
   InputAccessoryView,
-  Keyboard,
   ActivityIndicator,
   View,
 } from "react-native";
@@ -48,7 +47,7 @@ const NewPostScreen = ({ navigation }) => {
   useEffect(() => {
     if (isUrl(linkInput)) {
       fetchLinkPreview();
-      Keyboard.dismiss();
+      //Keyboard.dismiss();
     } else {
       setShareDisabled(true);
     }

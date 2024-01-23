@@ -5,7 +5,7 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
     <View
       style={{
         //marginHorizontal: 15,
-        borderWidth: 0.5,
+        borderWidth: 1,
         borderRadius: 6,
         borderColor: "#e9e9e9",
         marginTop: 5,

@@ -7,7 +7,6 @@ import {
   RefreshControl,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-
 import strivvy from "../api/strivvy";
 
 const ProfileScreen = ({ navigation }) => {
@@ -54,16 +53,22 @@ const ProfileScreen = ({ navigation }) => {
         </Text>
         <View style={{ flexDirection: "row" }}>
           <View style={{ alignItems: "center", marginRight: 30 }}>
-            <Text style={{ fontSize: 20, fontWeight: 500 }}>
+            <Text style={{ fontSize: 18, fontWeight: 500 }}>
               {profile.post_count}
             </Text>
-            <Text style={{ fontSize: 20, fontWeight: 300 }}>posts</Text>
+            <Text style={{ fontSize: 18, fontWeight: 300 }}>posts</Text>
+          </View>
+          <View style={{ alignItems: "center", marginRight: 20 }}>
+            <Text style={{ fontSize: 18, fontWeight: 500 }}>
+              {profile.followers_count}
+            </Text>
+            <Text style={{ fontSize: 18, fontWeight: 300 }}>followers</Text>
           </View>
           <View style={{ alignItems: "center" }}>
-            <Text style={{ fontSize: 20, fontWeight: 500 }}>
+            <Text style={{ fontSize: 18, fontWeight: 500 }}>
               {profile.following_count}
             </Text>
-            <Text style={{ fontSize: 20, fontWeight: 300 }}>following</Text>
+            <Text style={{ fontSize: 18, fontWeight: 300 }}>following</Text>
           </View>
         </View>
       </View>

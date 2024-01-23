@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, Button, Image, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, Share, Alert } from "react-native";
 import LinkPreview from "./LinkPreview";
 import AppLink from "react-native-app-link";
+import ShareButton from "../atoms/ShareButton";
 
-const Post = ({ nav, post }) => {
+const Post = ({ post }) => {
   const openLink = () => {
     AppLink.maybeOpenURL(post.url, {})
       .then(() => {
@@ -11,6 +12,25 @@ const Post = ({ nav, post }) => {
       .catch((err) => {
         // handle error
       });
+  };
+
+  const share = async () => {
+    try {
+      const result = await Share.share({
+        message: `${post.url}`,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
   };
 
   return (
@@ -32,9 +52,11 @@ const Post = ({ nav, post }) => {
         />
       </Pressable>
       {/* footer */}
-      {/* <View style={styles.footer}>
-        <ShareButton />
-      </View> */}
+      <View style={styles.footer}>
+        <Pressable onPress={() => share()}>
+          <ShareButton />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -43,7 +65,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
     marginBottom: 5,
-    //borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     paddingBottom: 10,
     paddingTop: 10,
     borderColor: "#e9e9e9",
@@ -52,6 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
+    marginBottom: 2,
   },
   username: {
     fontSize: 17,
@@ -82,6 +105,7 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: "row",
     marginTop: 8,
+    marginBottom: 5,
   },
 });
 
