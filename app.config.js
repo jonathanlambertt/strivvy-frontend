@@ -8,7 +8,7 @@ const config = {
   assetBundlePatterns: ["**/*"],
   ios: {
     bundleIdentifier: "com.strivvy.app",
-    buildNumber: "5",
+    buildNumber: "6",
   },
 };
 
