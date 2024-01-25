@@ -2,8 +2,14 @@ import { View, Text, StyleSheet, Pressable, Share, Alert } from "react-native";
 import LinkPreview from "./LinkPreview";
 import AppLink from "react-native-app-link";
 import ShareButton from "../atoms/ShareButton";
+import LikeButton from "../atoms/LikeButton";
+import { useEffect, useState } from "react";
+import strivvy from "../../api/strivvy";
 
 const Post = ({ post }) => {
+  const [isLiked, setIsLiked] = useState(post.is_liked);
+  const [timerActive, setTimerActive] = useState(false);
+
   const openLink = () => {
     AppLink.maybeOpenURL(post.url, {})
       .then(() => {
@@ -33,6 +39,48 @@ const Post = ({ post }) => {
     }
   };
 
+  const handleLikeButton = async () => {
+    // If the timer is not already active, start the timer
+    if (!timerActive) {
+      setIsLiked((prevIsLiked) => !prevIsLiked);
+      setTimerActive(true);
+    }
+  };
+
+  const likePost = async () => {
+    try {
+      await strivvy.post(`l/${post.id}`);
+    } catch (error) {}
+  };
+
+  const deleteLike = async () => {
+    try {
+      await strivvy.delete(`l/delete/${post.like_id}`);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    let timer;
+
+    if (timerActive) {
+      // Set a delay of 1 second for the debounce
+      timer = setTimeout(() => {
+        // Simulate API call based on the latest state of isLiked
+        if (!isLiked) {
+          deleteLike();
+        } else {
+          likePost();
+        }
+        setTimerActive(false); // Reset timer status
+      }, 1000);
+    }
+
+    return () => {
+      // Cleanup function to clear the timer when the component unmounts or timerActive changes
+      clearTimeout(timer);
+    };
+  }, [timerActive, isLiked]);
+
   return (
     <View style={styles.container}>
       {/* header */}
@@ -53,6 +101,9 @@ const Post = ({ post }) => {
       </Pressable>
       {/* footer */}
       <View style={styles.footer}>
+        <Pressable onPress={() => handleLikeButton()}>
+          <LikeButton isLiked={isLiked} />
+        </Pressable>
         <Pressable onPress={() => share()}>
           <ShareButton />
         </Pressable>
@@ -65,7 +116,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
     marginBottom: 5,
-    borderBottomWidth: 0.5,
+    //borderBottomWidth: 0.5,
     paddingBottom: 10,
     paddingTop: 10,
     borderColor: "#e9e9e9",
