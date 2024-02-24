@@ -47,7 +47,6 @@ const NewPostScreen = ({ navigation }) => {
   useEffect(() => {
     if (isUrl(linkInput)) {
       fetchLinkPreview();
-      //Keyboard.dismiss();
     } else {
       setShareDisabled(true);
     }

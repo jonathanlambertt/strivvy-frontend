@@ -30,7 +30,7 @@ const SignupScreen = ({ navigation }) => {
         password,
         email: formattedEmail,
       });
-      navigation.navigate("MainScreen");
+      navigation.navigate("SignupSuccessScreen");
     } catch (error) {
       setDisableSignup(false);
       setErrorText(JSON.stringify(error.response.data));
@@ -72,6 +72,7 @@ const SignupScreen = ({ navigation }) => {
           selectionColor={"#ef305a"}
           autoFocus
           autoCapitalize="none"
+          autoCorrect={false}
         />
         <Text style={{ fontSize: 16, marginBottom: 5, marginTop: 12 }}>
           Password
@@ -144,10 +145,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 1,
     borderColor: "#ececec",
-    //marginHorizontal: 15,
     borderRadius: 6,
     height: 48,
-    //marginTop: 15,
     fontSize: 15,
     backgroundColor: "#fcfcfc",
   },
