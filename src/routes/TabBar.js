@@ -35,6 +35,23 @@ const TabBar = () => {
           tabBarLabel: "Home",
         }}
       />
+      {/* <Tab.Screen
+        name="ExploreTab"
+        component={ExploreStack}
+        options={{
+          tabBarIcon: ({ color }) => {
+            return (
+              <Feather
+                name="compass"
+                size={30}
+                color={color}
+                style={{ marginTop: 5 }}
+              />
+            );
+          },
+          tabBarLabel: "Explore",
+        }}
+      /> */}
       <Tab.Screen
         name="NewPostScreen"
         component={PlaceHolder}
