@@ -8,7 +8,9 @@ const Stack = createNativeStackNavigator();
 
 const ProfileStack = ({ navigation }) => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ headerTitleStyle: { color: "#333", fontSize: 18 } }}
+    >
       <Stack.Screen
         name="ProfileScreen"
         component={ProfileScreen}

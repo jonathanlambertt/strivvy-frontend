@@ -114,7 +114,7 @@ const Post = ({ post }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 10,
+    marginHorizontal: 15,
     marginBottom: 5,
     //borderBottomWidth: 0.5,
     paddingBottom: 10,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   username: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: "500",
     flex: 1,
     //marginLeft: 7,

@@ -27,7 +27,7 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
             borderTopLeftRadius: 12,
             borderTopRightRadius: 12,
             borderColor: "#d3d3d3",
-            aspectRatio: 4 / 3,
+            aspectRatio: 16 / 9,
           }}
         />
       </View>
@@ -42,14 +42,14 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
       >
         <Text
           numberOfLines={2}
-          style={{ fontSize: 15, fontWeight: "500", color: "#333" }}
+          style={{ fontSize: 18, fontWeight: "500", color: "#333" }}
         >
           {title}
         </Text>
         <Text
           numberOfLines={1}
           style={{
-            fontSize: 13,
+            fontSize: 16,
             fontWeight: "500",
             color: "#808080",
             marginTop: 3,
@@ -63,10 +63,10 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
           {favicon != "null" ? (
             <Image
               src={favicon}
-              style={{ width: 12, height: 12, marginRight: 4 }}
+              style={{ width: 18, height: 18, marginRight: 4 }}
             />
           ) : null}
-          <Text style={{ fontSize: 11, color: "#333" }}>{siteName}</Text>
+          <Text style={{ fontSize: 14, color: "#333" }}>{siteName}</Text>
         </View>
       </View>
       {/* <View>
