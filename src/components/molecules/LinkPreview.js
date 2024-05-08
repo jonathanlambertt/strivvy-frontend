@@ -6,33 +6,38 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
       style={{
         //marginHorizontal: 15,
         borderWidth: 1,
-        borderRadius: 6,
+        borderRadius: 12,
         borderColor: "#e9e9e9",
         marginTop: 5,
-        flexDirection: "row",
-        padding: 8,
+        borderTopLeftRadius: 12,
+        borderTopRightRadius: 12,
+        //flexDirection: "row",
+        //padding: 12,
+        //marginHorizontal: 15,
       }}
     >
       <View>
         <Image
           src={image}
           style={{
-            width: 75,
-            height: 75,
+            //width: 300,
+            //height: 300,
             resizeMode: "contain",
             backgroundColor: "#ececec",
-            borderRadius: 6,
-            borderWidth: 0.5,
+            borderTopLeftRadius: 12,
+            borderTopRightRadius: 12,
             borderColor: "#d3d3d3",
+            aspectRatio: 4 / 3,
           }}
         />
       </View>
       <View
         style={{
           justifyContent: "center",
-          marginLeft: 10,
+          //marginLeft: 10,
           flex: 1,
           marginRight: 5,
+          padding: 10,
         }}
       >
         <Text
@@ -58,10 +63,10 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
           {favicon != "null" ? (
             <Image
               src={favicon}
-              style={{ width: 14, height: 14, marginRight: 3 }}
+              style={{ width: 12, height: 12, marginRight: 4 }}
             />
           ) : null}
-          <Text style={{ fontSize: 12, color: "#333" }}>{siteName}</Text>
+          <Text style={{ fontSize: 11, color: "#333" }}>{siteName}</Text>
         </View>
       </View>
       {/* <View>
