@@ -36,20 +36,26 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
           justifyContent: "center",
           //marginLeft: 10,
           flex: 1,
-          marginRight: 5,
-          padding: 10,
+          //marginRight: 5,
+          //padding: 8,
+          // paddingBottom: 8,
+          // paddingLeft: 8,
+          // paddingTop: 8,
+          marginLeft: 8,
+          marginVertical: 8,
+          marginRight: 8,
         }}
       >
         <Text
           numberOfLines={2}
-          style={{ fontSize: 18, fontWeight: "500", color: "#333" }}
+          style={{ fontSize: 16, fontWeight: "500", color: "#333" }}
         >
           {title}
         </Text>
         <Text
           numberOfLines={1}
           style={{
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: "500",
             color: "#808080",
             marginTop: 3,
@@ -63,10 +69,12 @@ const LinkPreview = ({ image, favicon, siteName, title, description }) => {
           {favicon != "null" ? (
             <Image
               src={favicon}
-              style={{ width: 18, height: 18, marginRight: 4 }}
+              style={{ width: 15, height: 15, marginRight: 4 }}
             />
           ) : null}
-          <Text style={{ fontSize: 14, color: "#333" }}>{siteName}</Text>
+          <Text style={{ fontSize: 12, color: "#666", fontWeight: "500" }}>
+            {siteName}
+          </Text>
         </View>
       </View>
       {/* <View>

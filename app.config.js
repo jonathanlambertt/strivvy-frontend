@@ -28,8 +28,8 @@ module.exports = () => {
     return {
       ...config,
       extra: {
-        baseURL: "http://192.168.1.166:8000/",
-        previewURL: "http://192.168.1.166:8000/p/preview/?url=",
+        baseURL: "http://192.168.1.19:8000/",
+        previewURL: "http://192.168.1.19:8000/p/preview/?url=",
         eas: {
           projectId: "145c6806-8cde-4847-9be5-29e756653401",
         },
