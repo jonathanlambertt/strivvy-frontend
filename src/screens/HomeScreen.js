@@ -13,8 +13,6 @@ import { Pressable } from "react-native";
 import AppName from "../components/atoms/AppName";
 import strivvy from "../api/strivvy";
 
-import MasonryList from "@react-native-seoul/masonry-list";
-
 const HomeScreen = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
   const [refreshing, setRefreshing] = useState(true);
@@ -52,11 +50,13 @@ const HomeScreen = ({ navigation }) => {
       {fetching ? (
         <ActivityIndicator style={{ marginTop: 10 }} size={"large"} />
       ) : (
-        <MasonryList
+        <FlatList
           data={posts}
           renderItem={({ item }) => <Post post={item} nav={navigation} />}
           keyExtractor={(item) => item.id}
-          onRefresh={() => onRefresh()}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
           ListEmptyComponent={
             <>
               <Text

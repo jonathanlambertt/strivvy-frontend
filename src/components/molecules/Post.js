@@ -100,14 +100,14 @@ const Post = ({ post }) => {
         />
       </Pressable>
       {/* footer */}
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
         <Pressable onPress={() => handleLikeButton()}>
           <LikeButton isLiked={isLiked} />
         </Pressable>
         <Pressable onPress={() => share()}>
           <ShareButton />
         </Pressable>
-      </View>
+      </View> */}
     </View>
   );
 };

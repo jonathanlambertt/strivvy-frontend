@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+import Octicons from "@expo/vector-icons/Octicons";
+
 const LikeButton = ({ isLiked }) => {
   return (
     <View style={styles.container}>
@@ -17,7 +19,7 @@ const LikeButton = ({ isLiked }) => {
       ) : (
         <>
           <Ionicons
-            name="ios-heart-outline"
+            name="heart-outline"
             size={20}
             color="#333"
             style={{ marginRight: 3 }}

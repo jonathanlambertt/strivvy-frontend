@@ -17,7 +17,7 @@ const ShareButton = () => {
       }}
     >
       <Ionicons
-        name="ios-arrow-redo-circle-outline"
+        name="arrow-redo-circle-outline"
         size={20}
         color="#333"
         style={{ marginRight: 3 }}
