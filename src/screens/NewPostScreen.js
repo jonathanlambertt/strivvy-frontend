@@ -8,6 +8,7 @@ import {
   InputAccessoryView,
   ActivityIndicator,
   View,
+  Pressable,
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import isUrl from "is-url";
@@ -34,12 +35,32 @@ const NewPostScreen = ({ navigation }) => {
         />
       ),
       headerRight: () => (
-        <Button
-          title="Share"
-          color={"#ef305a"}
+        // <Button
+        //   title="Share"
+        //   color={"#ef305a"}
+        //   disabled={shareDisabled}
+        //   onPress={() => shareLink()}
+        // />
+        <Pressable
+          onPress={shareLink}
           disabled={shareDisabled}
-          onPress={() => shareLink()}
-        />
+          style={({ pressed }) => ({
+            opacity: shareDisabled ? 0.4 : pressed ? 0.6 : 1,
+            paddingHorizontal: 12,
+            paddingVertical: 6,
+          })}
+        >
+          <Text
+            style={{
+              // color: "#ef305a",
+              color: "#f43f5e",
+              fontWeight: "700", // 👈 bold
+              fontSize: 18,
+            }}
+          >
+            Share
+          </Text>
+        </Pressable>
       ),
     });
   });
@@ -72,6 +93,7 @@ const NewPostScreen = ({ navigation }) => {
   const shareLink = async () => {
     try {
       setShareDisabled(true);
+
       await strivvy.post("p/", {
         thumbnail: preview.image,
         title: preview.title.substring(0, 250),
@@ -80,7 +102,12 @@ const NewPostScreen = ({ navigation }) => {
         site_name: preview.sitename.substring(0, 250),
         url: linkInput,
       });
-      navigation.goBack();
+
+      navigation.navigate({
+        name: "HomeScreen",
+        params: { justShared: true },
+        merge: true,
+      });
     } catch (error) {
       setShareDisabled(false);
     }
