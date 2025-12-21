@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   username: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "500",
     flex: 1,
     //marginLeft: 7,
