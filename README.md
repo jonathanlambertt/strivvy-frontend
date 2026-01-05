@@ -10,4 +10,6 @@ Strivvy is an Instagram-inspired app for sharing links.
 
 ## My role
 
-UX/UI Designer · Frontend Developer · Backend Developer
+Designer · Developer
+
+I designed and built the app and backend myself.
