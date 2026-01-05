@@ -8,8 +8,16 @@ Strivvy is an Instagram-inspired app for sharing links.
   <img src="./assets/screenshots/share-link-preview1.png" alt="Interaction screen" width="260" />
 </p>
 
-## My role
+## My Role
 
 Designer · Developer
 
 I designed and built the app and backend myself.
+
+## Why I Built This
+
+I built Strivvy because I share a lot of links with friends and family, so I wanted a service that catered to that.
+Using Instagram as inspiration, I wanted to see what a social link sharing app would be like.
+
+## What I Focused On
+
