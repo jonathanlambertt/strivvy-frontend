@@ -21,3 +21,7 @@ Using Instagram as inspiration, I wanted to see what a social link sharing app w
 
 ## What I Focused On
 
+I had 3 goals when designing Strivvy:
+1. Nice visual design for link previews and the app as a whole.
+2. Easy link inputting.
+3. Simple sharing and consuming of links.
