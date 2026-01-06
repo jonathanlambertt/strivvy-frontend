@@ -26,3 +26,8 @@ I had 3 goals when building Strivvy:
 1. Create visually pleasant link previews.
 2. Make sharing links fast and low-friction.
 3. Support sharing links outside the app, and ensure tapping a preview opens the content in the appropriate app.
+
+### Visually pleasant link previews
+
+I wanted full control over how links were presented, so I wrote my own previewer. The layout emphasizes imagery while
+still providing enough context so users can quickly understand what the link is about.
