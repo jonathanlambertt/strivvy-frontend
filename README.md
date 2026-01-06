@@ -33,3 +33,6 @@ still providing enough context so users can quickly understand what the link is 
 When sharing a link, Strivvy checks whether a link has been copied and displays a “Paste from clipboard” button to allow for easy input.
 
 ### 3. Seamless sharing and link opening across apps
+
+You can share links you see in your feed outside the app by tapping “Share” under the preview and copying the link. Tapping a preview will open 
+the content in its respective app. For example, a song on Spotify will open in Spotify.
