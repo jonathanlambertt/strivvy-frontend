@@ -31,3 +31,7 @@ I had 3 goals when building Strivvy:
 
 I wanted full control over how links were presented, so I wrote my own previewer. The layout emphasizes imagery while
 still providing enough context so users can quickly understand what the link is about.
+
+### Fast and low-friction link sharing
+
+When sharing a link, Strivvy checks whether a link has been copied and displays a “Paste from clipboard” button to allow for easy input.
