@@ -22,6 +22,10 @@ Using Instagram as inspiration, I wanted to see what a social link sharing app w
 ## What I Focused On
 
 I had 3 goals when designing Strivvy:
-1. Nice visual design for link previews and the app as a whole.
+1. Nice visual design for link previews.
 2. Easy link inputting.
 3. Simple sharing and consuming of links.
+
+In order to have full control of the look of the link previews I wrote my own code to fetch link information.
+I chose to display basic information about a link like its page title, description, image, and site name. The
+preview design emphasizes the image while providing useful information about the link.
