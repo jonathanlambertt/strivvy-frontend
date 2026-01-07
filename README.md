@@ -1,6 +1,6 @@
 # Strivvy · A social link sharing app
 
-Strivvy is an Instagram-inspired app for sharing links.
+Strivvy is a personal project exploring what social link sharing might feel like if links were treated as the primary content.
 
 <p align="center">
   <img src="./assets/screenshots/new-post-preview4.png" alt="Feed screen" width="260" style="margin-right: 12px;" />
@@ -36,3 +36,9 @@ When sharing a link, Strivvy checks whether a link has been copied and displays 
 
 You can share links you see in your feed outside the app by tapping “Share” under the preview and copying the link. Tapping a preview will open 
 the content in its respective app. For example, a song on Spotify will open in Spotify.
+
+## What the App Supports
+- Creating an account and following friends
+- Sharing links through a social feed
+- Viewing rich link previews
+- Liking and sharing posts
