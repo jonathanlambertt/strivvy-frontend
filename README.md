@@ -12,7 +12,7 @@ Strivvy is a personal project exploring what social link sharing might feel like
 
 Designer · Developer
 
-I designed and built both the app and its backend.
+I designed and built both the app and its [backend](https://github.com/jonathanlambertt/strivvy-backend).
 
 ## Why I Built This
 
