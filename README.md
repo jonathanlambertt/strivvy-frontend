@@ -21,7 +21,7 @@ Using Instagram as inspiration, I wanted to explore what a social link-sharing a
 
 ## What I Focused On
 
-I had 3 goals when building Strivvy:
+I had three goals when building Strivvy:
 
 ### 1. Visually pleasant link previews
 
