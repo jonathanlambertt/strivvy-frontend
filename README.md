@@ -1,6 +1,6 @@
 # Strivvy · Social link sharing
 
-Strivvy is a personal project exploring what social link sharing might feel like if links were treated as the primary content.
+Strivvy is a personal project that explores what social sharing might feel like if links, not photos or videos, were treated as the primary content.
 
 <p align="center">
   <img src="./assets/screenshots/new-post-preview4.png" alt="Feed screen" width="260" style="margin-right: 12px;" />
