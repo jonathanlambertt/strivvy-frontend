@@ -1,4 +1,4 @@
-# Strivvy · A social link sharing app
+# Strivvy · Social link sharing
 
 Strivvy is a personal project exploring what social link sharing might feel like if links were treated as the primary content.
 
