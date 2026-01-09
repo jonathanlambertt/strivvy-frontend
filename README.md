@@ -16,8 +16,8 @@ I designed and built both the app and its [backend](https://github.com/jonathanl
 
 ## Why I Built This
 
-I built Strivvy because I often share links with friends and family, and wanted a service that better supported that behavior. 
-Using Instagram as inspiration, I wanted to explore what a social link-sharing app might feel like.
+I built Strivvy because I frequently share links with friends and family and wanted a service that better supported that behavior. 
+I was interested in what it would look like to bring the Instagram-style experience for photos to link sharing.
 
 ## What I Focused On
 
