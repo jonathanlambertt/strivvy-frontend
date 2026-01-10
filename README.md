@@ -38,7 +38,13 @@ You can share links you see in your feed outside the app by tapping “Share” 
 the content in its respective app. For example, a song on Spotify will open in Spotify.
 
 ## What the App Supports
+
 - Creating an account and following friends
 - Sharing links through a social feed
 - Viewing rich link previews
 - Liking and sharing posts
+
+## Demo
+
+<img src="./assets/screenshots/demo.gif" alt="Demo" width="260" />
+
