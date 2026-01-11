@@ -8,6 +8,12 @@ Strivvy is a personal project that explores what social sharing might feel like 
   <img src="./assets/screenshots/share-link-preview1.png" alt="Interaction screen" width="260" />
 </p>
 
+## Demo
+
+<p align="center">
+  <img src="./assets/screenshots/demo.gif" alt="Demo" width="260" />
+</p>
+
 ## My Role
 
 Developer & Designer
@@ -43,8 +49,3 @@ the content in its respective app. For example, a song on Spotify will open in S
 - Sharing links through a social feed
 - Viewing rich link previews
 - Liking and sharing posts
-
-## Demo
-
-<img src="./assets/screenshots/demo.gif" alt="Demo" width="260" />
-
