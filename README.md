@@ -14,6 +14,11 @@ Developer & Designer
 
 I designed and built both the app and its [backend](https://github.com/jonathanlambertt/strivvy-backend).
 
+## Technology
+
+- JavaScript, Python
+- React Native, Django
+
 ## Why I Built This
 
 I built Strivvy because I frequently share links with friends and family and wanted a service that better supported that behavior. 
