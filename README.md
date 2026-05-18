@@ -8,12 +8,6 @@ Strivvy is a personal project that explores what social sharing might feel like 
   <img src="./assets/screenshots/share-link-preview1.png" alt="Interaction screen" width="260" />
 </p>
 
-## Demo
-
-<p align="center">
-  <img src="./assets/screenshots/demo.gif" alt="Demo" width="260" />
-</p>
-
 ## My Role
 
 Developer & Designer
